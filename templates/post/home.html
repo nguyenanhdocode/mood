@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Mood | Trang chủ{% endblock %}
+
+{% block content %}
+    {% include 'jumbotron.html' %}
+
+    <div class="container mt-2 p-0">
+        <h2>Moods</h2>
+        <a href="{% url 'post:new_mood' %}" class="btn btn-primary" role="button">
+            <i class="fa-solid fa-plus"></i>
+            Thêm mới mood
+        </a>
+        {% for post in posts %}
+        
+            {% include 'post/post.html' with post=post %}
+
+        {% endfor %}
+        
+        
+    </div>
+
+
+    
+{% endblock %}

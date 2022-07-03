@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Mood | Profile{% endblock %}
+
+{% block content %}
+    <!-- PROFILE -->
+    <div class="container">
+
+        <div class="container card p-2 mt-2">
+            <h4>Tài khoản</h4>
+            <hr>
+            <div class="text-center">
+                <img src="{{ request.user.avatar.url }}" style="width: 120px; height: 120px; border-radius: 60px;" alt="User avatar">
+                <div></div>
+                <a href="{% url 'user:change_avatar' %}" role="button" class="btn btn-default btn-sm mt-1">
+                    <i class="fa-solid fa-image"></i>
+                    Đổi ảnh đại diện
+                </a>
+                <h3>{{ request.user.get_full_name }}</h3>
+                <p class="m-0">Tên đăng nhập: {{ request.user.username }}</p>
+                <p class="m-0">Ngày tham gia: {{ request.user.date_joined }}</p>
+            </div>
+            <hr>
+            
+        </div>
+    
+        <div class="container card p-2 mt-2">
+            <h4>Mood đã đăng ({{ mood_count }})</h4>
+            <hr>
+            {% if mood_count != 0 %}
+                {% for mood in moods %}
+                    {% include 'post/post.html' with post=mood %}
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">Chưa có bài đăng nào</div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

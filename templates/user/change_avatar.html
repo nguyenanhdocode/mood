@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Mood | Profile{% endblock %}
+
+{% block content %}
+
+<!-- AVATAR UPLOAD FORM -->
+<div class="container pt-2">
+    <div class="container text-center">
+        <form style="max-width: 100%; width: 400px;" class="card d-inline-block" 
+        action="" method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="container pb-2">
+                <h3 class="form-text text-center">Upload ảnh</h3>
+                <input required class="form-control mb-2" type="file"  accept=".jpg, .png, .gif, .heic" name="avatar" id="avatar">
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    Lưu
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

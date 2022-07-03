@@ -1,0 +1,23 @@
+<div class="card p-2 mt-2">
+    <p class="text-muted"><strong>{{ post.created|timesince }} by {{ post.author.get_full_name }}</strong></p>
+    <hr>
+    <p>{{ post.content|linebreaks}}</p>
+    {% if request.user.username == post.author.username %}
+    <hr>
+    <div class="container p-0 pb-2">
+        
+        <a href="{% url 'post:remove_mood' pk=post.pk %}" role="button" class="btn btn-sm btn-danger">
+            <i class="fa-regular fa-trash-can"></i>
+            Xóa bài
+        </a>
+        <a href="{% url 'post:edit_mood' pk=post.pk %}" role="button" class="btn btn-sm btn-info">
+            <i class="fa-solid fa-pen-to-square"></i>
+            Chỉnh sửa
+        </a>
+        <!-- <a role="button" class="btn btn-sm btn-primary">
+            <i class="fa-solid fa-eye"></i>
+            Xem chi tiết
+        </a> -->
+    </div>
+    {% endif %}
+</div>

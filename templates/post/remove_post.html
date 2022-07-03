@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Mood | Xóa mood{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="container pt-2">
+            <div class="container text-center">
+                <form style="max-width: 100%; width: 400px;" class="card d-inline-block" action="" method="post">
+                    {% csrf_token %}
+                    <div class="container pb-2">
+                        <h3 class="form-text text-center">Xác nhận</h3>
+                        {% include 'messages.html' %}
+                        <p class="text-warning">Bạn có chắc chắn muốn xóa bài đăng?</p>
+                        <button type="submit" class="btn btn-danger btn-block">
+                            <i class="fa-regular fa-trash-can"></i>
+                            Xác nhận xóa
+                        </button>
+
+                        <a href="{% url 'post:home' %}" class="btn btn-primary d-block mt-1" role="button">
+                            <i class="fa-solid fa-house-chimney"></i>
+                            Trang chủ
+                        </a>
+                    </div>
+                </form>
+            </div>
+    </div>
+{% endblock %}

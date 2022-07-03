@@ -1,0 +1,32 @@
+<!-- {% load static %} -->
+<nav class="navbar navbar-dark">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="{% url 'post:home' %}" class="navbar-brand">
+                <img src="{% static 'local_image/mood.png' %}" alt="Logo" width="100">
+            </a>
+        </div>
+
+        <div class="user">
+            <!-- User chưa đăng nhập -->
+            {%if not request.user.is_authenticated %}
+                <a href="{% url 'user:login' %}" class="btn btn-default text-light" role="button">Đăng nhập</a>
+
+            {% else %}
+                <!-- User đã đăng nhập -->
+                <div class="dropdown">
+                    <img class="avatar dropdown-toggle" data-toggle="dropdown" src="{{ request.user.avatar.url }}" alt="User avatar"> <span class="caret"></span></button>
+                    <ul class="dropdown-menu pl-2" style="margin: 2px 0 0 -120px;" >
+                      <li><a href="{% url 'post:home' %}">Trang chủ</a></li>
+                      <hr>
+                      <li><a href="{% url 'user:profile' %}">Tài khoản</a></li>
+                      <li><a href="{% url 'user:change_password' %}">Đổi mật khẩu</a></li>
+                      <hr>
+                      <li><a href="{% url 'user:logout' %}">Đăng xuất</a></li>
+                    </ul>
+                  </div>
+            {% endif %}
+           
+        </div>
+    </div>
+</nav>
